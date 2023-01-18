@@ -11,3 +11,28 @@ Results of a controlled plasmode simulation study show that for many genes a not
 However, for some genes, the MSE increases, and this cannot be prevented by using a more sophisticated prior distribution in the Bayesian approach.
 
 In this GitHub repository, the code needed to reproduce the simulation studies as well as the resulting datasets is stored.
+
+
+## VPA-Datasets
+
+The underlying data, originally published in Krug et al. (2013, https://link.springer.com/article/10.1007/s00204-012-0967-3), are stored here in the way that they are used in the publication.
+
+- VPA.RData: Appropriately pre-processed expression values for all 54675 probe sets and all 27 samples of the gene expression data.
+- VPA-Parameter-StatSign-BiolRel.RData: parameters of 4pLL models (using the parameterization $\tilde{e} = \log(e)$) fitted to those 7191 probe sets that fulfilled the criteria for statistical significance and biological relevance
+
+## Simulation and Preparation
+
+- EmpiricalBayes-Simulation-MixedPrior-CompleteDatasets.R: contains the code for the simulation procedure. The simulation results are stored in the files in the folder "SimResults"
+- Preparation-Analysis-MixedPrior.R: Summarizing the simulation results to datasets containing e.g. all estimates for the Bayes, ML approach to be analyzed later
+
+## Main directory
+ 
+The following results files are created by the code in "Preparaion-Analysis-MixedPrior.R" and contain the following:
+
+- Results-BaPerGeneML.RData: Estimates for parameter $\tilde{e}$ as obtained by the Bayes procedure with the ML prior for all 7191 genes and all 1000 simulation runs
+- Results-BaPerGeneMix.RData: Estimates for parameter $\tilde{e}$ as obtained by the Bayes procedure with the mixed prior for all 7191 genes and all 1000 simulation runs
+- Results-BaPerGeneRob.RData: Estimates for parameter $\tilde{e}$ as obtained by the Bayes procedure with the robust prior for all 7191 genes and all 1000 simulation runs
+- Results-EstPerGene.RData: Estimates for parameter $\tilde{e}$ as obtained by directly estimating it
+- Results-PostVarMLPerGene.RData: Posterior variance of parameter $\tilde{e}$ as obtained by the Bayes procedure with the ML prior for all 7191 genes and all 1000 simulation runs
+
+The final analysis of the resulting MSEs is performed in "AnalysisInformationSharing.R"
